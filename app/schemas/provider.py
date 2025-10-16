@@ -1,4 +1,6 @@
 #提供商DTO
+from typing import Optional
+
 from pydantic import BaseModel,Field
 
 class ProviderBase(BaseModel):
@@ -18,3 +20,10 @@ class ProviderResponse(ProviderBase):
 
     class Config:#配置模型行为
         from_attributes=True
+
+class ProviderUpdate(ProviderBase):
+    """更新DTO"""
+    name:Optional[str]=Field(None,max_length=100,description="提供商名称")
+    endpoint:Optional[str]=Field(None,max_length=255,description="api调用地址")
+    model:Optional[str]=Field(None,max_length=100,description="模型名称")
+    api_key:Optional[str]=Field(None,description="api密钥")

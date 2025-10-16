@@ -5,15 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54b9ff57-c37a-4988-a86a-8411757e0f2b" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/app/api/provider.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/schemas/provider.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/service/provider.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/data/models/document.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/data/models/document.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/data/models/role.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/data/models/role.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/data/models/session.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/data/models/session.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/provider.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/provider.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/schemas/provider.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/schemas/provider.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/service/provider.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/service/provider.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,18 +36,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.main.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "uv 运行.main run.executor": "Run",
-    "uv 运行.未命名.executor": "Run"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;uv 运行.main run.executor&quot;: &quot;Run&quot;,
+    &quot;uv 运行.未命名.executor&quot;: &quot;Run&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Xuexi\PythonProject\ai-chat01\app\data\models" />
