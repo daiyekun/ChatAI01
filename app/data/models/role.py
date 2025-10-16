@@ -24,5 +24,5 @@ class Role(Base):
     sessions=relationship("Session",back_populates="role",cascade="all, delete-orphan")
 
     #定义关系 角色-->知识库（多对多）
-    knowledge_bases=relationship("KnowledgeBase",secondary="role_knowledge",back_populates="roles")
+    knowledge_base=relationship("KnowledgeBase",secondary="role_knowledge",back_populates="roles")
 

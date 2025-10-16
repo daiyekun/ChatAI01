@@ -25,4 +25,4 @@ class Session(Base):
     messages=relationship("Message",back_populates="session",cascade="all, delete-orphan")
 
     #定义会话-->知识库 关系（多对多）
-    knowledge_bases=relationship("KnowledgeBase",secondary="session_knowledge", back_populates="sessions")
+    knowledge_base=relationship("KnowledgeBase",secondary="session_knowledge", back_populates="sessions")

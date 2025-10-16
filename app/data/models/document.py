@@ -20,4 +20,4 @@ class Document(Base):
     #关联知识库ID
     knowledge_base_id=Column(Integer,ForeignKey('knowledge_base.id'),nullable=False)
     #定义关系 文档--》知识库 （多对一）
-    knowledge_base=relationship("KnowledgeBase",back_populates="documents",cascade="all, delete-orphan" )
+    knowledge_base=relationship("KnowledgeBase",back_populates="documents")

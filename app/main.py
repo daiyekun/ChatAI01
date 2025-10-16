@@ -4,6 +4,7 @@ from importlib import reload
 from fastapi import  FastAPI
 #从我们创建的api 字目录导入hello 模板（hello.py文件）
 from api import  hello
+from api import provider
 
 #创建一个fasetAPI 应用的实例
 #类似program.cs中调用WebApplication.CreateBuilder() 和bulider.Bulid()
@@ -27,6 +28,12 @@ app.include_router(
     #tags 参数用于在api 文档中对端点进行分组
     #所有来治愈roles.router 端点都会被归类 “测试" 这个标签下
     tags=["测试"]
+)
+
+#注册Provider 路由
+app.include_router(
+    provider.router,
+    prefix="/api"
 )
 
 #定义一个根路径get 请求处理函数

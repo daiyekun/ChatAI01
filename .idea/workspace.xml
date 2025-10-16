@@ -5,35 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54b9ff57-c37a-4988-a86a-8411757e0f2b" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/ai-chat01.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/REMADE.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/ai/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/api/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/api/hello.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/config.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/data/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/data/db.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/data/models/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/data/models/base.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/data/models/document.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/data/models/knowledge_base.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/data/models/message.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/data/models/provider.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/data/models/role.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/data/models/role_knowledge.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/data/models/session.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/data/models/session_knowledge.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/schemas/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/service/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/api/provider.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/schemas/provider.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/service/provider.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/data/models/document.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/data/models/document.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/data/models/role.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/data/models/role.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/data/models/session.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/data/models/session.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +48,9 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master"
+    "git-widget-placeholder": "master",
+    "uv 运行.main run.executor": "Run",
+    "uv 运行.未命名.executor": "Run"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -76,6 +58,24 @@
       <recent name="C:\Xuexi\PythonProject\ai-chat01\app\data\models" />
       <recent name="C:\Xuexi\PythonProject\ai-chat01" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="main run" type="UvRunConfigurationType" factoryName="UvRunConfigurationType">
+      <option name="args">
+        <list />
+      </option>
+      <option name="checkSync" value="true" />
+      <option name="env">
+        <map />
+      </option>
+      <option name="runType" value="SCRIPT" />
+      <option name="scriptOrModule" value="C:\Xuexi\PythonProject\ai-chat01\app\main.py" />
+      <option name="uvArgs">
+        <list />
+      </option>
+      <option name="uvSdkKey" value="uv (ai-chat01)" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -93,5 +93,28 @@
       <updated>1760082333621</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
