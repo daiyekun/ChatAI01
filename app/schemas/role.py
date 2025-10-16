@@ -25,7 +25,7 @@ class RoleResponse(RoleBase):
 
 class RoleUpdate(RoleBase):
     """更新role dto"""
-    name:Optional[str] =Field(None,max_length=,description="角色名称")
+    name:Optional[str] =Field(None,max_length=100,description="角色名称")
     description:Optional[str]=Field(None,max_length=500,description="角色描述")
     system_prompt:Optional[str]=Field(None,description="系统提示词")
     temperature:Optional[float]=Field(0.7,ge=0.0,le=2.0,description="模型温度")
