@@ -2,9 +2,11 @@
 from importlib import reload
 
 from fastapi import  FastAPI
+from pyexpat.errors import messages
+
 #从我们创建的api 字目录导入hello 模板（hello.py文件）
 from api import  hello
-from api import provider,role
+from api import provider,role,message
 
 #创建一个fasetAPI 应用的实例
 #类似program.cs中调用WebApplication.CreateBuilder() 和bulider.Bulid()
@@ -38,6 +40,10 @@ app.include_router(
 
 app.include_router(
     role.router,
+    prefix="/api"
+)
+app.include_router(
+    message.router,
     prefix="/api"
 )
 

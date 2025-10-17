@@ -8,7 +8,7 @@ class RoleBase(BaseModel):
     description:Optional[str]=Field(None,max_length=500,description="角色描述")
     system_prompt:Optional[str]=Field(None,description="系统提示词")
     temperature:float=Field(0.7,ge=0.0,le=2.0,description="模型温度")
-    provider_i:int=Field(...,description="管理模型提供商ID")
+    provider_id:int=Field(...,description="管理模型提供商ID")
 
 class RoleCreate(RoleBase):
     """传教role模型"""

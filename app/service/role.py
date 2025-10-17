@@ -49,7 +49,7 @@ class RoleService:
         )
 
         roles=result.scalars().all()
-        role_responses=[RoleResponse.model_validate((r) for r in roles)]
+        role_responses=[RoleResponse.model_validate(r) for r in roles]
         return role_responses
 
     async  def update(self,role_id:int,role_data:RoleUpdate)->Optional[RoleResponse] :

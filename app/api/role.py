@@ -11,7 +11,7 @@ from typing import  List
 router=APIRouter(prefix= "/roles",tags=["模型提角色管理"])
 
 @router.post("/",response_model=RoleResponse,status_code=201 )
-async  def create_Role(prover_data:RoleCreate,db:AsyncSession=Depends(getdb)):
+async  def create_role(prover_data:RoleCreate,db:AsyncSession=Depends(getdb)):
     """创建新的模型提角色"""
     service=RoleService(db)
 
@@ -23,7 +23,7 @@ async  def create_Role(prover_data:RoleCreate,db:AsyncSession=Depends(getdb)):
 
 
 @router.get("/",response_model=List[RoleResponse])
-async def list_roles(db:AsyncSession=Depends(getdb)):
+async def get_roles(db:AsyncSession=Depends(getdb)):
     """获取所有提角色"""
     service=RoleService(db)
 
@@ -39,10 +39,10 @@ async def list_roles(db:AsyncSession=Depends(getdb)):
 async def get_role(role_id:int,db:AsyncSession=Depends(getdb)):
     service=RoleService(db)
 
-    Role=await service.get_by_id(role_id)
-    if not Role:
+    role=await service.get_by_id(role_id)
+    if not role:
         raise HTTPException(status_code=404,detail=f"提角色{str(role_id)}不存在")
-    return Role
+    return role
 
 
 @router.put("/{Role_id}",response_model=RoleResponse)
@@ -63,14 +63,14 @@ async def update_role(
             )
 
     try:
-        Role=await service.update(role_id,prover_data)
-        if not Role:
+        role=await service.update(role_id,prover_data)
+        if not role:
             raise HTTPException(status_code=404,detail=f"提角色ID {role_id} 不存在")
-        return Role
+        return role
     except Exception as e:
         raise HTTPException(status_code=500,detail=f"更新失败{str(e)}")
 
-@router.delete("/{Role_id}",status_code=204)
+@router.delete("/{role_id}",status_code=204)
 async def delete_role(
         role_id:int,
         db:AsyncSession=Depends(getdb)):
