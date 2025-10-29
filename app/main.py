@@ -1,11 +1,11 @@
 #从fastapi 库导入FastAPI类，这是创建应用核心
 from importlib import reload
-
-from fastapi import  FastAPI
+import time
+from fastapi import  FastAPI,Request
 from pyexpat.errors import messages
 
 #从我们创建的api 字目录导入hello 模板（hello.py文件）
-from api import  hello
+#from api import  hello
 from api import provider,role,message
 
 #创建一个fasetAPI 应用的实例
@@ -17,6 +17,15 @@ app=FastAPI(
     # version 是办不办好，同样会线上在文档中
     version="1.0",
 )
+
+# 测试中间件
+@app.middleware("http")
+async def add_process_time_header(request: Request, call_next):
+    start_time = time.perf_counter()
+    response = await call_next(request)
+    process_time = time.perf_counter() - start_time
+    response.headers["X-Process-Time"] = str(process_time)
+    return response
 
 #使用app.include_router() 方法类将我们创建的角色路由包含到引用中
 #这里雷士在asp.net core 中调用app.MapControllers()
