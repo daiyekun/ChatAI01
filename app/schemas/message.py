@@ -15,7 +15,7 @@ class MessageBase(BaseModel):
     session_id:int=Field(...,description="关联会话ID")
 
 
-class MessageResponse(BaseModel):
+class MessageResponse(MessageBase):
     """message 响应DTO"""
     id:int=Field(...,description="消息ID")
     create_at:datetime=Field(...,description="创建时间")

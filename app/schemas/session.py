@@ -23,6 +23,9 @@ class SessionResponse(SessionBase):
     create_at:datetime=Field(...,description="创建时间")
     message_count:Optional[int]=Field(None,description="消息数量")
 
+    class Config:
+        from_attributes = True
+
 class SessionListResponse(BaseModel):
     """Session 列表响应DTO模板"""
     id:int=Field(...,description="会话ID")

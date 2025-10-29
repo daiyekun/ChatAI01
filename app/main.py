@@ -57,4 +57,4 @@ async def read_root():
 if __name__ == "__main__":
     import uvicorn
     #使用uvicorn 运行当前应用，指定应用路径，主机地址，端口和热加载功能
-    uvicorn.run("app.main:app", host="0.0.0.0", port=8000,reload=True)
+    uvicorn.run("app.main:app", host="127.0.0.1", port=8000,reload=True)

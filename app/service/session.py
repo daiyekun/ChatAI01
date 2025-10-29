@@ -11,9 +11,9 @@ class SessionService:
         self.db=db
 
 
-    async  def create(self,session_create:SessionCreate):
+    async  def create(self,session_create:SessionCreate)->SessionResponse:
         """创建session"""
-        role=await  self.db.get(Role,session_create.id)
+        role=await  self.db.get(Role,session_create.role_id)
         if role is None:
             raise  ValueError(f"角色 ID {session_create.role_id} 不存在")
 

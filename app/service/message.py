@@ -25,7 +25,7 @@ class MessageService:
          return MessageResponse.model_validate(message)
 
 
-     async  def getConversation_history(self,session_id:int,limit:int=50)->List[MessageResponse]:
+     async  def getconversation_history(self,session_id:int,limit:int=50)->List[MessageResponse]:
          """"查询会话历史记录"""
          result=await self.db.execute(
              select(Message)
@@ -55,7 +55,7 @@ class MessageService:
              raise  ValueError(f"角色 {role.name} 不存在")
 
          #获取消息历史
-         conversation_history=await self.getConversation_history(chat_req.session_id)
+         conversation_history=await self.getconversation_history(chat_req.session_id)
 
          #这里调用AI服务来生成回复
          #目前先返回以后模拟回复

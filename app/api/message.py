@@ -11,7 +11,7 @@ from typing import List
 
 router=APIRouter(prefix="/sessions",tags=["会话管理"])
 
-@router.get("/",response_model=SessionResponse,status_code=201)
+@router.post("/",response_model=SessionResponse,status_code=201)
 async def create_session(session_data:SessionCreate,db: AsyncSession = Depends(getdb)):
     """创建会话"""
     service=SessionService(db)
@@ -92,7 +92,7 @@ async  def chat(chat_request:ChatRequest,db: AsyncSession = Depends(getdb)):
     service=MessageService(db)
 
     try:
-        response=await service.create(chat_request)
+        response=await service.chat(chat_request)
         return  response
     except ValueError as e:
         raise HTTPException(
