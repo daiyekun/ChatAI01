@@ -59,7 +59,7 @@ async  def get_messages(session_id: int
     service=MessageService(db)
 
     try:
-        messages=await  service.getConversation_history(session_id,limit)
+        messages=await  service.getconversation_history(session_id,limit)
         return messages
     except Exception as e:
         raise HTTPException(

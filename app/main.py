@@ -21,6 +21,7 @@ app=FastAPI(
 #使用app.include_router() 方法类将我们创建的角色路由包含到引用中
 #这里雷士在asp.net core 中调用app.MapControllers()
 
+"""
 app.include_router(
     #第一个参数是我们想要包含的路由对象
     hello.router,
@@ -31,6 +32,10 @@ app.include_router(
     #所有来治愈roles.router 端点都会被归类 “测试" 这个标签下
     tags=["测试"]
 )
+
+"""
+
+
 
 #注册Provider 路由
 app.include_router(
