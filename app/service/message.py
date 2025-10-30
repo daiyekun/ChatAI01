@@ -4,6 +4,7 @@ from sqlalchemy import select,delete
 from sqlalchemy.orm import selectinload
 from app.data.models import  Message,Session,Role
 from app.schemas.message import  MessageRole,MessageBase,MessageResponse,ChatRequest
+from app.ai.aichainservice import AIChatService
 
 class MessageService:
      def __init__(self,db:AsyncSession):
@@ -59,7 +60,9 @@ class MessageService:
 
          #这里调用AI服务来生成回复
          #目前先返回以后模拟回复
-         assistant_content=(f"我是{role.name } 我们聊了{len(conversation_history)} 条消息 收到您的消息'{chat_req.message}' 模拟回复")
+         # assistant_content=(f"我是{role.name } 我们聊了{len(conversation_history)} 条消息 收到您的消息'{chat_req.message}' 模拟回复")
+         ai=AIChatService(role)
+         assistant_content=await ai.chat(conversation_history,chat_req.message)
 
          #创建用户信息
          user_message=MessageBase(
