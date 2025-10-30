@@ -1,4 +1,4 @@
-from typing import  List
+from typing import  List,AsyncGenerator
 from langchain_core.messages import  HumanMessage,AIMessage
 from langchain_core.output_parsers import  StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
@@ -15,7 +15,8 @@ class AIChatService:
             base_url=role.provider.endpoint,
             api_key=role.provider.api_key,
             model=role.provider.model,
-            temperature=role.temperature
+            temperature=role.temperature,
+            streaming=True,# 支持流式掉用
         )
 
         #构造Prompt 模板
@@ -42,5 +43,22 @@ class AIChatService:
         #调用链
         result=await  self.chain.ainvoke({"history":chat_history,"input":user_input})
         return  result
+
+    async def chat_stream(self,history:List[MessageBase],user_input:str) -> AsyncGenerator[str] :
+        """
+        流式返回生成内容 ，没生成一段内容就yield 一次
+        :param history: 历史聊天内容
+        :param user_input: 用户输入
+        :return: 回复内容
+        """
+        chat_history=[
+            HumanMessage(content=msg.content) if msg.role.value==MessageRole.User else AIMessage(content=msg.content)
+            for msg in history if msg.role.value in (MessageRole.User, MessageRole.Assistant)
+        ]
+
+        # 这里使用llm 的流式生成方法
+
+        async  for chunk in self.chain.astream({"history":chat_history,"input":user_input}):
+               yield chunk
 
 

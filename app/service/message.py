@@ -1,10 +1,12 @@
-from typing import List
+from typing import List,AsyncGenerator
 from sqlalchemy.ext.asyncio import  AsyncSession
 from sqlalchemy import select,delete
 from sqlalchemy.orm import selectinload
 from app.data.models import  Message,Session,Role
 from app.schemas.message import  MessageRole,MessageBase,MessageResponse,ChatRequest
 from app.ai.aichainservice import AIChatService
+import json
+
 
 class MessageService:
      def __init__(self,db:AsyncSession):
@@ -38,7 +40,8 @@ class MessageService:
          messages= result.scalars().all()
          return [MessageResponse.model_validate(msg) for msg in messages]
 
-     async  def chat(self,chat_req:ChatRequest)->MessageResponse:
+     # 一次性返回使用 async  def chat(self,chat_req:ChatRequest)->MessageResponse:
+     async def chat(self, chat_req: ChatRequest) -> AsyncGenerator[str]:
          """处理聊天消息"""
          # 1 验证session 是否存在
          session=await self.db.get(Session,chat_req.session_id)
@@ -61,8 +64,21 @@ class MessageService:
          #这里调用AI服务来生成回复
          #目前先返回以后模拟回复
          # assistant_content=(f"我是{role.name } 我们聊了{len(conversation_history)} 条消息 收到您的消息'{chat_req.message}' 模拟回复")
+
+
          ai=AIChatService(role)
-         assistant_content=await ai.chat(conversation_history,chat_req.message)
+        # 下面这行代码是一次性返回所有消息
+        # assistant_content=await ai.chat(conversation_history,chat_req.message)
+
+        #流式调用
+         assistant_content_buffer=""
+         async for chunk in ai.chat_stream(conversation_history,chat_req.message):
+             assistant_content_buffer+=chunk
+             payload=json.dumps({
+                 "content":chunk
+             },ensure_ascii=False)
+             yield  payload
+
 
          #创建用户信息
          user_message=MessageBase(
@@ -76,13 +92,13 @@ class MessageService:
          #创建助手回复
          assistant_message=MessageBase(
              role=MessageRole.Assistant,
-             content=assistant_content,
+             content=assistant_content_buffer ,# 一次性返回用 assistant_content
              session_id=chat_req.session_id,
          )
 
          res=await self.create(assistant_message)
 
-         return res
+        # 异步返回 return res
 
      async def delete(self,message_id:int)->bool:
          """删除消息"""

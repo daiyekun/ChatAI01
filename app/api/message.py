@@ -2,6 +2,8 @@
 
 from fastapi import APIRouter,Depends,HTTPException,Query
 from sqlalchemy.ext.asyncio import AsyncSession
+from starlette.responses import StreamingResponse
+
 from app.data.db import  getdb
 from app.schemas.message import MessageResponse,ChatRequest
 from app.schemas.session import SessionResponse,SessionCreate,SessionUpdate,SessionListResponse
@@ -87,6 +89,8 @@ async def delete_message(message_id: int,db: AsyncSession = Depends(getdb)):
             detail=f"删除消息失败{str(e)}"
         )
 
+# 这个由于调用底层被改成流式输出了。不能直接使用一次性返回这个函数
+"""
 @router.post("/chat",response_model=MessageResponse)
 async  def chat(chat_request:ChatRequest,db: AsyncSession = Depends(getdb)):
     service=MessageService(db)
@@ -104,3 +108,22 @@ async  def chat(chat_request:ChatRequest,db: AsyncSession = Depends(getdb)):
             status_code=500,
             detail=f"处理聊天请求失败 {str(e)}"
         )
+        
+"""
+
+@router.post("/chat")
+async def chat(chat_request:ChatRequest,db: AsyncSession = Depends(getdb)):
+    service = MessageService(db)
+
+    async def event_generator():
+        try:
+            async for chunk in service.chat(chat_request):
+                # SSE 个数 每条数据追加前面 “data:” 末尾两个换行
+                event=f"data:{chunk}\n\n"
+                yield event
+        except ValueError as e:
+            yield f"\n[Error] {str(e)}"
+        except Exception as e:
+            yield f"\n[Error] 处理请求失败： {str(e)}"
+
+    return StreamingResponse(event_generator(), media_type="text/event-stream")
